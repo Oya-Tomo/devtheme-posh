@@ -24,7 +24,19 @@
                     "background_templates": [
                         "{{ if eq .OS ubuntu }}<p:ubuntu-red>{{ end }}"
                     ],
-                    "template": " {{.Icon}} {{.OS}} "
+                    "template": "{{.Icon}} "
+                },
+                {
+                    "type": "battery",
+                    "style": "diamond",
+                    "foreground": "p:yellow",
+                    "background": "p:black",
+                    "leading_diamond": "<foreground,background>\ue0b3</>",
+                    "trailing_diamond": "<foreground,background>\ue0b1</>",
+                    "template":
+                        " {{ if eq .Percentage 100 }}\uf578{{ else if ge .Percentage 90 }}\uf581{{ else if ge .Percentage 80 }}\uf580{{ else if ge .Percentage 70 }}\uf57f{{ else if ge .Percentage 60 }}\uf57e{{ else if ge .Percentage 50 }}\uf57d{{ else if ge .Percentage 40 }}\uf57c{{ else if ge .Percentage 30 }}\uf57b{{ else if ge .Percentage 20 }}\uf57a{{ else if ge .Percentage 10 }}\uf579{{ else }}\uf579{{ end }}:{{ .Percentage }}% ",
+                    "properties": {
+                    }
                 },
                 {
                     "type": "path",
@@ -32,26 +44,25 @@
                     "foreground": "p:blue",
                     "background": "p:black",
                     "leading_diamond": "<foreground,background>\ue0b3</>",
-                    "trailing_diamond": "<foreground,background>\ue0b1</>\ue0b0",
-                    "template": " \uf74a {{ path .Path .Location }}",
+                    "trailing_diamond": "<foreground,background>\ue0b1</>",
+                    "template": " \uf74a {{.Path}}",
                     "properties": {
-                        "style": "folder",
-                        "home_icon": " \uf015 ~ "
+                        "style": "full",
+                        "home_icon": " \uf015 ~"
                     }
-                }
-            ]
-        },
-        {
-            "type": "rprompt",
-            "segments": [
+                },
                 {
                     "type": "git",
                     "style": "diamond",
                     "foreground": "#ffffff",
                     "background": "p:git-black",
-                    "leading_diamond": "<foreground,background>\ue0b3</>",
-                    "trailing_diamond": "<foreground,background>\ue0b1</>",
-                    "template": " {{ if .UpstreamURL }}{{ url .UpstreamIcon .UpstreamURL }} {{ end }}{{ .HEAD }} "
+                    "leading_diamond": "<background,p:black>\ue0b2</><foreground,background>\ue0b3</>",
+                    "trailing_diamond": "<foreground,background>\ue0b1</><background,p:black>\ue0b0</>",
+                    "template": " {{ if .UpstreamURL }}{{ url .UpstreamIcon .UpstreamURL }} {{ end }}{{ .HEAD }}",
+                    "properties": {
+                        "fetch_status": true,
+                        "fetch_upstream_icon": true
+                    }
                 },
                 {
                     "type": "exit",
@@ -64,20 +75,43 @@
                     "template": " {{ if gt .Code 0 }}<p:error-red>\uf658</>{{ else }}<p:ok-green>\uf058</>{{ end }} "
                 },
                 {
-                    "type": "battery",
+                    "type": "text",
+                    "style": "plain",
+                    "foreground": "p:black",
+                    "template": "\ue0b0"
+                }
+            ]
+        },
+        {
+            "type": "rprompt",
+            "segments": [
+                {
+                    "type": "text",
+                    "style": "plain",
+                    "foreground": "p:black",
+                    "template": "\ue0b2"
+                },
+                {
+                    "type": "time",
                     "style": "diamond",
-                    "foreground": "p:yellow",
-                    "background": "p:black",
-                    "leading_diamond": "<foreground,background>\ue0b3</>",
-                    "trailing_diamond": "<foreground,background>\ue0b1</>\ue0b0",
-                    "template":
-                        " {{ if eq .Percentage 100 }}\uf578{{ else if ge .Percentage 90 }}\uf581{{ else if ge .Percentage 80 }}\uf580{{ else if ge .Percentage 70 }}\uf57f{{ else if ge .Percentage 60 }}\uf57e{{ else if ge .Percentage 50 }}\uf57d{{ else if ge .Percentage 40 }}\uf57c{{ else if ge .Percentage 30 }}\uf57b{{ else if ge .Percentage 20 }}\uf57a{{ else if ge .Percentage 10 }}\uf579{{ else }}\uf579{{ end }}:{{ .Percentage }}% ",
-                    "properties": {
-                    }
+                    "foreground": "#ffffff",
+                    "background": "p:black"
+                },
+                {
+                    "type": "text",
+                    "style": "plain",
+                    "foreground": "p:black",
+                    "template": "\ue0b0"
                 }
             ]
         }
     ],
+    "secondary_prompt": {
+        "foreground": "p:black",
+        "background": "transparent",
+        "template": "\ue0b6<#ffffff,p:black>></>\ue0b4"
+    },
+    "console_title_template": "{{ .Shell }} in {{ .Folder }}  User:{{ .UserName }} OS:{{ .OS }}",
     "palette": {
         "black": "#303030",
         "red": "#ff0000",
