@@ -24,7 +24,7 @@
                     "background_templates": [
                         "{{ if eq .OS ubuntu }}<p:ubuntu-red>{{ end }}"
                     ],
-                    "template": "{{.Icon}} "
+                    "template": " {{.Icon}} "
                 },
                 {
                     "type": "battery",
