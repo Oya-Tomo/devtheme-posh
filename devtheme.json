@@ -1,0 +1,99 @@
+{
+    "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+    "blocks": [
+        {
+            "alignment": "left",
+            "type": "prompt",
+            "segments": [
+                {
+                    "type": "session",
+                    "style": "diamond",
+                    "foreground": "p:green",
+                    "background": "p:black",
+                    "leading_diamond": "\ue0b6",
+                    "trailing_diamond": "<foreground,background>\ue0b1</>",
+                    "template": " {{ .UserName }} "
+                },
+                {
+                    "type": "os",
+                    "style": "diamond",
+                    "foreground": "p:red",
+                    "background": "p:black",
+                    "leading_diamond": "<foreground,background>\ue0b3</>",
+                    "trailing_diamond": "<foreground,background>\ue0b1</>",
+                    "background_templates": [
+                        "{{ if eq .OS ubuntu }}<p:ubuntu-red>{{ end }}"
+                    ],
+                    "template": " {{.Icon}} {{.OS}} "
+                },
+                {
+                    "type": "path",
+                    "style": "diamond",
+                    "foreground": "p:blue",
+                    "background": "p:black",
+                    "leading_diamond": "<foreground,background>\ue0b3</>",
+                    "trailing_diamond": "<foreground,background>\ue0b1</>\ue0b0",
+                    "template": " \uf74a {{ path .Path .Location }}",
+                    "properties": {
+                        "style": "folder",
+                        "home_icon": " \uf015 ~ "
+                    }
+                }
+            ]
+        },
+        {
+            "type": "rprompt",
+            "segments": [
+                {
+                    "type": "git",
+                    "style": "diamond",
+                    "foreground": "#ffffff",
+                    "background": "p:git-black",
+                    "leading_diamond": "<foreground,background>\ue0b3</>",
+                    "trailing_diamond": "<foreground,background>\ue0b1</>",
+                    "template": " {{ if .UpstreamURL }}{{ url .UpstreamIcon .UpstreamURL }} {{ end }}{{ .HEAD }} "
+                },
+                {
+                    "type": "exit",
+                    "style": "diamond",
+                    "foreground": "#ffffff",
+                    "background": "p:black",
+                    "properties": {
+                        "always_enabled": true
+                    },
+                    "template": " {{ if gt .Code 0 }}<p:error-red>\uf658</>{{ else }}<p:ok-green>\uf058</>{{ end }} "
+                },
+                {
+                    "type": "battery",
+                    "style": "diamond",
+                    "foreground": "p:yellow",
+                    "background": "p:black",
+                    "leading_diamond": "<foreground,background>\ue0b3</>",
+                    "trailing_diamond": "<foreground,background>\ue0b1</>\ue0b0",
+                    "template":
+                        " {{ if eq .Percentage 100 }}\uf578{{ else if ge .Percentage 90 }}\uf581{{ else if ge .Percentage 80 }}\uf580{{ else if ge .Percentage 70 }}\uf57f{{ else if ge .Percentage 60 }}\uf57e{{ else if ge .Percentage 50 }}\uf57d{{ else if ge .Percentage 40 }}\uf57c{{ else if ge .Percentage 30 }}\uf57b{{ else if ge .Percentage 20 }}\uf57a{{ else if ge .Percentage 10 }}\uf579{{ else }}\uf579{{ end }}:{{ .Percentage }}% ",
+                    "properties": {
+                    }
+                }
+            ]
+        }
+    ],
+    "palette": {
+        "black": "#303030",
+        "red": "#ff0000",
+        "green": "#00aa00",
+        "blue": "#1010ff",
+        "yellow": "#ffaa55",
+        "error-red": "#ff0000",
+        "flutter-blue": "#0468d7",
+        "git-black": "#24292f",
+        "java-red": "#c74634",
+        "kotlin-purple": "#7f52ff",
+        "node-green": "#026e00",
+        "ok-green": "#00aa55",
+        "python-blue": "#3776ab",
+        "react-water": "#61dafb",
+        "ubuntu-red": "#f07b55"
+    },
+    "version": 2
+}
