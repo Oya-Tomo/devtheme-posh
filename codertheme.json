@@ -1,0 +1,142 @@
+{
+    "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+    "blocks": [
+        {
+            "alignment": "left",
+            "segments": [
+                {
+                    "type": "text",
+                    "style": "plain",
+                    "foreground": "p:black",
+                    "template": "\ue0b2"
+                },
+                {
+                    "type": "git",
+                    "style": "diamond",
+                    "foreground": "#ffffff",
+                    "background": "p:git-black",
+                    "leading_diamond": "<background,p:black>\ue0b2</>",
+                    "trailing_diamond": "<background,p:black>\ue0b0</>",
+                    "template": "{{ if .UpstreamURL }}{{ url .UpstreamIcon .UpstreamURL }} {{ end }}{{ .HEAD }}",
+                    "properties": {
+                        "fetch_upstream_icon": true,
+                        "fetch_status": true
+                    }
+                },
+                {
+                    "type": "node",
+                    "style": "diamond",
+                    "foreground": "#ffffff",
+                    "background": "p:node-green",
+                    "leading_diamond": "<background,p:black>\ue0b2</>",
+                    "trailing_diamond": "<background,p:black>\ue0b0</>",
+                    "template": "\uf898 {{ .Full }}",
+                    "properties": {
+                        "fetch_version": true
+                    }
+                },
+                {
+                    "type": "python",
+                    "style": "diamond",
+                    "foreground": "#ffffff",
+                    "background": "p:python-blue",
+                    "leading_diamond": "<background,p:black>\ue0b2</>",
+                    "trailing_diamond": "<background,p:black>\ue0b0</>",
+                    "template": "\uf81f {{ .Venv }}"
+                },
+                {
+                    "type": "flutter",
+                    "style": "diamond",
+                    "foreground": "#ffffff",
+                    "background": "p:flutter-blue",
+                    "leading_diamond": "<background,p:black>\ue0b2</>",
+                    "trailing_diamond": "<background,p:black>\ue0b0</>",
+                    "template": "\uf10b {{ .Full }}"
+                },
+                {
+                    "type": "go",
+                    "style": "diamond",
+                    "foreground": "#ffffff",
+                    "background": "p:go-blue",
+                    "leading_diamond": "<background,p:black>\ue0b2</>",
+                    "trailing_diamond": "<background,p:black>\ue0b0</>",
+                    "template": "\ufcd1 {{ .Full }}"
+                },
+                {
+                    "type": "rust",
+                    "style": "diamond",
+                    "foreground": "#ffffff",
+                    "background": "p:rust-brown",
+                    "leading_diamond": "<background,p:black>\ue0b2</>",
+                    "trailing_diamond": "<background,p:black>\ue0b0</>",
+                    "template": "\ue7a8 {{ .Full }}"
+                },
+                {
+                    "type": "ruby",
+                    "style": "diamond",
+                    "foreground": "#ffffff",
+                    "background": "p:ruby-red",
+                    "leading_diamond": "<background,p:black>\ue0b2</>",
+                    "trailing_diamond": "<background,p:black>\ue0b0</>",
+                    "template": "\ue791 {{ .Full }}"
+                },
+                {
+                    "type": "java",
+                    "style": "diamond",
+                    "foreground": "#ffffff",
+                    "background": "p:java-red",
+                    "leading_diamond": "<background,p:black>\ue0b2</>",
+                    "trailing_diamond": "<background,p:black>\ue0b0</>",
+                    "template": "\ue256 {{ .Full }}"
+                },
+                {
+                    "type": "kotlin",
+                    "style": "diamond",
+                    "foreground": "#ffffff",
+                    "background": "p:kotlin-purple",
+                    "leading_diamond": "<background,p:black>\ue0b2</>",
+                    "trailing_diamond": "<background,p:black>\ue0b0</>",
+                    "template": "\ufa05 {{ .Full }}"
+                },
+                {
+                    "type": "path",
+                    "style": "diamond",
+                    "foreground": "#ffffff",
+                    "background": "#555555",
+                    "leading_diamond": "<background,p:black>\ue0b2</>",
+                    "trailing_diamond": "<background,p:black>\ue0b0</>",
+                    "template": "{{ .Path }}",
+                    "properties": {
+                        "style": "full"
+                    }
+                },
+                {
+                    "type": "exit",
+                    "style": "plain",
+                    "foreground": "p:black",
+                    "background": "p:black",
+                    "template": " {{ if gt .Code 0 }}<p:error-red>\uf655</>{{ else }}<p:ok-green>\uf62b</>{{ end }}<p:black,transparent>\ue0b0</>",
+                    "properties": {
+                        "always_enabled": true
+                    }
+                }
+            ],
+            "type": "prompt"
+        }
+    ],
+    "palette": {
+        "black": "#303030",
+        "git-black": "#24292f",
+        "node-green": "#026e00",
+        "python-blue": "#3776ab",
+        "flutter-blue": "#0468d7",
+        "go-blue": "#007d9c",
+        "rust-brown": "#884422",
+        "ruby-red": "#cc342d",
+        "java-red": "#c74634",
+        "kotlin-purple": "#7f52ff",
+        "ok-green": "#00aa55",
+        "error-red": "#ff0000"
+    },
+    "version": 2
+}
